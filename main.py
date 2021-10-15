@@ -13,7 +13,14 @@ def cylinder_area(r:float,h:float):
     Returns:
     float: pole powierzchni walca 
     """
-    return None
+    if  isinstance(r, float) or isinstance(h, float) or r >= 0 or h >= 0:
+        pp = np.pi * r**2
+        pb = 2 * np.pi * r * h
+        pc = 2*pp + pb
+
+        return pc
+    else:
+        return None
 
 def fib(n:int):
     """Obliczenie pierwszych n wyrazów ciągu Fibonnaciego. 
