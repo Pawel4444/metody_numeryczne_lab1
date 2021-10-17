@@ -10,30 +10,31 @@ def cylinder_area(r:float,h:float):
 
         return pc
     else:
-        return None
+        return np.nan
 
 
 def fib(n:int):
-    """Obliczenie pierwszych n wyrazów ciągu Fibonnaciego. 
-    Szczegółowy opis w zadaniu 3.
-    
-    Parameters:
-    n (int): liczba określająca ilość wyrazów ciągu do obliczenia 
-    
-    Returns:
-    np.ndarray: wektor n pierwszych wyrazów ciągu Fibonnaciego.
-    """
-    if n == 1 or n ==2:
-        return 1
-    elif n>2:
-        return fib(n-1)+fib(n-2)
+    if n == 1:
+        return np.array([1])
+    if n>0 and isinstance(n, int):
+        a = 1
+        b = 1        
+        wek = np.array([1, 1])
+        for i in range(1, n-1):
+            a, b = b, a + b
+            wek = np.append(wek, b)
+        return wek.reshape([1,n])
     else:
         return None
-#print(fib(6))
+
+print(fib(16))
 
 def matrix_calculations(a:float):
     M = np.array([[a, 1, -a], [0, 1, 1], [-a, a, 1]])
-    Minv = np.linalg.inv(M)
+    if a == 0:
+        Minv = np.NaN
+    else:
+        Minv = np.linalg.inv(M)
     Mt = M.T
     Mdet = np.linalg.det(M)
     return (Minv, Mt, Mdet)
@@ -42,9 +43,10 @@ def matrix_calculations(a:float):
     
 
 def custom_matrix(m:int, n:int):
-    wynik = np.zeros((m,n))
     
-    if m>0 and n>0:
+    
+    if m>0 and n>0 and isinstance(m, int) and isinstance(n, int):
+        wynik = np.zeros((m,n))
         for i in range(m):
             for j in range(n):
                 if i>j:
