@@ -27,7 +27,7 @@ def fib(n:int):
     else:
         return None
 
-print(fib(16))
+
 
 def matrix_calculations(a:float):
     M = np.array([[a, 1, -a], [0, 1, 1], [-a, a, 1]])
@@ -56,6 +56,5 @@ def custom_matrix(m:int, n:int):
         return wynik
     else:
         return None
-#print("lalaa")       
-#print(custom_matrix(4,6))
+
 
